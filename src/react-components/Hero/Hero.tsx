@@ -17,7 +17,7 @@ export default function Hero() {
       align={'center'}
       justify={'space-evenly'}
       spacing={{ base: 8, md: 10 }}
-      direction={{ base: 'row', xl: 'row', sm: 'column-reverse' }}>
+      direction={{ base: 'column-reverse', md: 'row', lg: 'row', xl: 'row' }}>
       <VStack spacing={{ base: 5, md: 10 }} align={'flex-start'}>
         <Heading
           lineHeight={1.1}
@@ -31,7 +31,15 @@ export default function Hero() {
             Full Stack Web Developer!
           </Text>
         </Heading>
-        <Stack direction='row' spacing={4} align='center'>
+        <Stack
+          direction={{
+            base: 'column-reverse',
+            md: 'row',
+            lg: 'row',
+            xl: 'row'
+          }}
+          spacing={4}
+          alignSelf='center'>
           <Link href='https://github.com/fetichex' isExternal>
             <Button w='150px' borderRadius={'50'}>
               <Stack direction='row' spacing={4}>
@@ -62,7 +70,7 @@ export default function Hero() {
       </VStack>
       <Image
         borderRadius={'15rem'}
-        boxSize='400px'
+        boxSize={[200, 300, 400]}
         src={'/diegoCano.png'}></Image>
     </Stack>
   )
