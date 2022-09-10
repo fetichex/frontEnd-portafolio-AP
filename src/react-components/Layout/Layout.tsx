@@ -1,4 +1,4 @@
-import { Container } from '@chakra-ui/react'
+import { Container, Stack } from '@chakra-ui/react'
 
 interface Props {
   children: JSX.Element
@@ -7,7 +7,7 @@ interface Props {
 export default function Layout({ children }: Props) {
   return (
     <Container alignSelf={'center'} maxWidth={'container.xl'}>
-      {children}
+      <Stack spacing={'10'}>{children}</Stack>
     </Container>
   )
 }
