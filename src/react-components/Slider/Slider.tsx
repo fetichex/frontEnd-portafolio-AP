@@ -1,17 +1,24 @@
-import { Image, Show } from '@chakra-ui/react'
 import '@splidejs/react-splide/css'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
+import {
+  Box,
+  Stack,
+  Image,
+  Text,
+  useDisclosure,
+  SlideFade
+} from '@chakra-ui/react'
 import { IMAGES } from './images'
 
 export default function Slider() {
+  const { isOpen, onToggle } = useDisclosure()
   return (
     <Splide
       options={{
         type: 'loop',
         autoplay: true,
-        drag: true,
-        width: 650,
-        arrows: false,
+        width: 600,
+        drag: false,
         interval: 3000,
         speed: 400,
         rewind: true,
@@ -22,7 +29,18 @@ export default function Slider() {
       aria-label='My Favorite Images'>
       {IMAGES.map((img, i) => (
         <SplideSlide>
-          <Image rounded={'2xl'} key={i} src={img.image} alt={img.alt} />
+          <Image
+            key={i}
+            src={img.image}
+            rounded={'1rem'}
+            onMouseEnter={onToggle}
+            onMouseLeave={onToggle}
+          />
+          <SlideFade in={isOpen} offsetY='10px'>
+            <Box>
+              <Text>{img.info}</Text>
+            </Box>
+          </SlideFade>
         </SplideSlide>
       ))}
     </Splide>

@@ -1,9 +1,13 @@
-import { VStack, Text } from '@chakra-ui/react'
+import { VStack, Text, Heading } from '@chakra-ui/react'
 
 export function AboutSection() {
   return (
-    <VStack>
-      <Text fontSize={'4xl'} color={'orange.400'} fontWeight={600}> ABOUT ME...</Text>
+    <VStack maxW={'2xl'} h='300px' spacing={'10'}>
+      <Heading>
+        <Text color={'orange.400'} fontWeight={600}>
+          ABOUT ME...
+        </Text>
+      </Heading>
       <Text as={'p'} fontSize={'xl'} textAlign={'justify'}>
         I am a Full Stack Web Developer. Proactive, persevering and
         detail-oriented. Focused on my professional growth and improving my hard
