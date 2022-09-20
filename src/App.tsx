@@ -1,20 +1,17 @@
 import React from 'react'
-import NavBar from './react-components/NavBar'
+import { Route } from 'wouter'
 import Layout from './react-components/Layout'
 import Hero from './react-components/Hero'
 import About from './react-components/About'
 
 const App: React.FC = () => {
   return (
-    <>
-      <NavBar />
-      <Layout>
-        <>
-          <Hero />
-          <About/>
-        </>
-      </Layout>
-    </>
+    <Layout>
+      <>
+        <Route path="/" component={Hero}></Route>
+        <Route path="/about" component={About}></Route>
+      </>
+    </Layout>
   )
 }
 
