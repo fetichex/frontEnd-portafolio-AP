@@ -1,5 +1,6 @@
-import { Container, Stack, Box } from '@chakra-ui/react'
+import { Container, Stack } from '@chakra-ui/react'
 import SideBar from '../SideBar'
+import { Buttons } from '../SideBar/Buttons'
 
 interface Props {
   children: JSX.Element
@@ -7,10 +8,14 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   return (
-    <Container h={'100%'} alignSelf={'center'} maxWidth={'container.xl'}>
+    <Container h={'100%'} alignSelf={'center'} maxWidth={'8xl'}>
       <Stack direction={'row'} h={'100%'}>
-        <SideBar />
-        <Box px={6}>{children}</Box>
+        <SideBar>
+          <Buttons />
+        </SideBar>
+        <Stack justify={'center'} align={'center'} h="100%" w="100%" px={6}>
+          {children}
+        </Stack>
       </Stack>
     </Container>
   )
