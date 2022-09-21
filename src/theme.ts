@@ -8,7 +8,12 @@ const theme = extendTheme({
   },
   colors: {
     primary: {
-      500: '#f5c204'
+      100: '#fef8e5',
+      200: '#fcecb3',
+      300: '#fae081',
+      400: '#f8d44f',
+      500: '#f5c204',
+      600: '#c49b03'
     },
     myBlack: {
       500: '#191919'

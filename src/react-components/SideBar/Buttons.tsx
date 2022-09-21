@@ -10,7 +10,8 @@ import {
 import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5'
 
 export const Buttons = () => {
-  const buttonColor = useColorModeValue('red.400', 'teal.500')
+  const buttonColor = useColorModeValue('primary.300', 'primary.600')
+  const buttonColorOnHover = useColorModeValue('primary.500', 'primary.500')
   return (
     <Stack w="100%" alignItems={'flex-start'} direction={'column'} spacing={7}>
       <Link fontWeight={'bold'} href="https://github.com/fetichex" isExternal>
@@ -30,6 +31,7 @@ export const Buttons = () => {
       </Link>
       <Button
         bg={buttonColor}
+        _hover={{ bg: `${buttonColorOnHover}` }}
         as="a"
         w="100%"
         rounded={'full'}
