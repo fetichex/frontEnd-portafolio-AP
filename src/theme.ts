@@ -26,7 +26,7 @@ const theme = extendTheme({
     global: (props: ThemeConfig) => ({
       '#root, html, body': {
         h: '100vh',
-        color: mode(undefined, 'whiteAlpha.800')(props)
+        color: mode('blackAlpha.800', 'whiteAlpha.800')(props)
       },
       body: {
         bg: mode('myWhite.500', 'myBlack.500')(props)

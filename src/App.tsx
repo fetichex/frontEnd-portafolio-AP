@@ -1,21 +1,22 @@
 import React from 'react'
 import { Route } from 'wouter'
 import Layout from './react-components/Layout'
-import Hero from './react-components/Hero'
-import About from './react-components/About'
-import Tools from './react-components/Tools'
-import Projects from './react-components/Projects'
+import SideBar from './react-components/SideBar'
+import { Buttons } from './react-components/SideBar/Buttons'
+import { ROUTES } from './tools'
 
 const App: React.FC = () => {
   return (
-    <Layout>
-      <>
-        <Route path="/" component={Hero}></Route>
-        <Route path="/about" component={About}></Route>
-        <Route path="/tools" component={Tools}></Route>
-        <Route path="/projects" component={Projects}></Route>
-      </>
-    </Layout>
+    <>
+      <SideBar>
+        <Buttons />
+      </SideBar>
+      <Layout>
+        {ROUTES.map(({ path, component }, i) => (
+          <Route key={i} path={path} component={component}></Route>
+        ))}
+      </Layout>
+    </>
   )
 }
 

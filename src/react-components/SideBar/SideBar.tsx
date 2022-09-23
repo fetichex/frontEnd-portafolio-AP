@@ -1,8 +1,6 @@
 import { Link as ReachLink, useLocation } from 'wouter'
 import {
-  VStack,
   HStack,
-  Heading,
   Link,
   Icon,
   Text,
@@ -10,45 +8,44 @@ import {
   useColorModeValue
 } from '@chakra-ui/react'
 import { ToggleColorButton } from './component'
-import LINKS from './LINKS'
+import { SECTIONS } from '../../tools'
+import { TypeChildren } from '../../interfaces'
 
-interface ButtonsProps {
-  children: JSX.Element
-}
-
-const SideBar = ({ children }: ButtonsProps) => {
+const SideBar = ({ children }: TypeChildren) => {
   const [location, setLocation] = useLocation()
   const borderColor = useColorModeValue('blackAlpha.200', 'witheAlpha.200')
   return (
-    <VStack
-      pl={2}
-      pr={12}
-      py={6}
+    <HStack
+    w={'100%'}
+    pos={'fixed'}
+    zIndex={2}
+    px={'30px'}
+      spacing=" 40px"
       alignItems={'center'}
-      spacing={20}
-      borderRightWidth={1}
-      borderRightColor={borderColor}>
+      borderBottomWidth={1}
+      justifyContent={'space-between'}
+      borderBottomColor={borderColor}>
       <Link as={ReachLink} href="/">
-        <HStack as={'a'} alignItems={'center'}>
-          <Heading>DC</Heading>
+        <HStack as={'a'}>
+          <Text fontSize={'45px'} fontWeight={700}>DC</Text>
         </HStack>
       </Link>
-      <VStack h={'lg'} alignItems={'start'} spacing={20}>
-        {LINKS.map((link, i) => (
+      <HStack
+        justifyContent={'space-between'}
+        spacing={'20px'}>
+        {SECTIONS.map(({ href, text, activeIcon, inactiveIcon }, i) => (
           <Link
             key={i}
             as={ReachLink}
-            href={link.href}
-            onClick={() => setLocation(link.href)}>
+            href={href}
+            onClick={() => setLocation(href)}>
             <Link>
               <HStack alignItems={'center'}>
                 <Icon
-                  as={
-                    location !== link.href ? link.inactiveIcon : link.activeIcon
-                  }
+                  as={location !== href ? inactiveIcon : activeIcon}
                   h={5}
                   w={5}></Icon>
-                <Text fontSize={'lg'}>{link.text}</Text>
+                <Text fontSize={'lg'}>{text}</Text>
               </HStack>
             </Link>
           </Link>
@@ -56,11 +53,11 @@ const SideBar = ({ children }: ButtonsProps) => {
         <Stack direction="row" spacing={3}>
           {children}
         </Stack>
-        <HStack w={'100%'} alignSelf={'center'}>
+        <HStack w={'100%'}>
           <ToggleColorButton />
         </HStack>
-      </VStack>
-    </VStack>
+      </HStack>
+    </HStack>
   )
 }
 

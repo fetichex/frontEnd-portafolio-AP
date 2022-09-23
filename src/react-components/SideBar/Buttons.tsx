@@ -1,5 +1,4 @@
 import {
-  Stack,
   HStack,
   Text,
   Button,
@@ -7,28 +6,21 @@ import {
   Icon,
   useColorModeValue
 } from '@chakra-ui/react'
-import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io5'
+import { EXTERNAL_LINK } from '../../tools'
 
 export const Buttons = () => {
   const buttonColor = useColorModeValue('primary.300', 'primary.600')
   const buttonColorOnHover = useColorModeValue('primary.500', 'primary.500')
   return (
-    <Stack w="100%" alignItems={'flex-start'} direction={'column'} spacing={7}>
-      <Link fontWeight={'bold'} href="https://github.com/fetichex" isExternal>
-        <HStack alignItems={'center'}>
-          <Icon as={IoLogoGithub} h={5} w={5} />
-          <Text fontSize={'lg'}>GitHub</Text>
-        </HStack>
-      </Link>
-      <Link
-        fontWeight={'bold'}
-        href="https://www.linkedin.com/in/diegocano-fullstackdeveloper/"
-        isExternal>
-        <HStack alignItems={'center'}>
-          <Icon as={IoLogoLinkedin} h={5} w={5} />
-          <Text fontSize={'lg'}>LinkedIn</Text>
-        </HStack>
-      </Link>
+    <HStack w="100%" alignItems={'center'}>
+      {EXTERNAL_LINK.map(({ href, text, icon }, i) => (
+        <Link key={i} fontWeight={'bold'} href={href} isExternal>
+          <HStack alignItems={'center'}>
+            <Icon as={icon} h={5} w={5} />
+            <Text fontSize={'lg'}>{text}</Text>
+          </HStack>
+        </Link>
+      ))}
       <Button
         bg={buttonColor}
         _hover={{ bg: `${buttonColorOnHover}` }}
@@ -41,6 +33,6 @@ export const Buttons = () => {
           <Text fontSize={'lg'}>Resume</Text>
         </HStack>
       </Button>
-    </Stack>
+    </HStack>
   )
 }

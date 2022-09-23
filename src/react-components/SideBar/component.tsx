@@ -1,11 +1,12 @@
-import { Button, Icon, useColorMode } from '@chakra-ui/react'
+import { Circle, Icon, useColorModeValue, useColorMode } from '@chakra-ui/react'
 import { IoIosMoon, IoIosSunny } from 'react-icons/io'
 
 export const ToggleColorButton = () => {
   const { colorMode, toggleColorMode } = useColorMode()
+  const bgCircle = useColorModeValue('myBlack.500', 'myWhite.500')
 
   return (
-    <Button w={'100%'} py={2} rounded={'full'} onClick={toggleColorMode}>
+    <Circle size={'50px'} as={'button'} bg={bgCircle} onClick={toggleColorMode}>
       {colorMode === 'light'
         ? (
         <Icon as={IoIosMoon} h={5} w={5} />
@@ -13,6 +14,6 @@ export const ToggleColorButton = () => {
         : (
         <Icon as={IoIosSunny} h={5} w={5} />
           )}
-    </Button>
+    </Circle>
   )
 }
