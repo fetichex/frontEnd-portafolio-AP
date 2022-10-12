@@ -21,6 +21,9 @@ module.exports = {
   plugins: ['react', '@typescript-eslint'],
   rules: {
     'space-before-function-paren': 'off',
-    'no-undef': 'off'
+    'no-undef': 'off',
+    'multiline-ternary': 'off',
+    'import/no-absolute-path': 'off',
+    curly: 'off'
   }
 }
