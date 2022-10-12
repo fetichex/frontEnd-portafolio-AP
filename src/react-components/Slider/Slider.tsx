@@ -1,48 +1,32 @@
 import '@splidejs/react-splide/css'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
-import {
-  Box,
-  Stack,
-  Image,
-  Text,
-  useDisclosure,
-  SlideFade
-} from '@chakra-ui/react'
+import { Box, Image } from '@chakra-ui/react'
 import { IMAGES } from './images'
 
 export default function Slider() {
-  const { isOpen, onToggle } = useDisclosure()
   return (
-    <Splide
-      options={{
-        type: 'loop',
-        autoplay: true,
-        width: 600,
-        drag: false,
-        interval: 3000,
-        speed: 400,
-        rewind: true,
-        pagination: false,
-        gap: '1rem',
-        easing: 'ease-in-out'
-      }}
-      aria-label='My Favorite Images'>
-      {IMAGES.map((img, i) => (
-        <SplideSlide>
-          <Image
-            key={i}
-            src={img.image}
-            rounded={'1rem'}
-            onMouseEnter={onToggle}
-            onMouseLeave={onToggle}
-          />
-          <SlideFade in={isOpen} offsetY='10px'>
-            <Box>
-              <Text>{img.info}</Text>
-            </Box>
-          </SlideFade>
-        </SplideSlide>
-      ))}
-    </Splide>
+    <Box clipPath={'border-box'} rounded="1rem">
+      <Splide
+        options={{
+          height: '100vh',
+          gap: 1,
+          type: 'loop',
+          autoplay: true,
+          arrows: false,
+          drag: false,
+          interval: 2500,
+          speed: 1000,
+          rewind: true,
+          pagination: false,
+          easing: 'ease-in-out'
+        }}
+        aria-label='about images'>
+        {IMAGES.map((img, i) => (
+          <SplideSlide key={i}>
+            <Image h="100%" objectFit={'cover'} src={img.image} />
+          </SplideSlide>
+        ))}
+      </Splide>
+    </Box>
   )
 }

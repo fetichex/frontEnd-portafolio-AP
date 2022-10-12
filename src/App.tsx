@@ -1,19 +1,20 @@
 import React from 'react'
-import NavBar from './react-components/NavBar'
+import { Route } from 'wouter'
 import Layout from './react-components/Layout'
-import Hero from './react-components/Hero'
-import About from './react-components/About'
+import SideBar from './react-components/SideBar'
+import Buttons from './react-components/Buttons'
+import { ROUTES } from './tools'
 
 const App: React.FC = () => {
   return (
     <>
-      <NavBar />
+      <SideBar />
       <Layout>
-        <>
-          <Hero />
-          <About/>
-        </>
+        {ROUTES.map(({ path, component }, i) => (
+          <Route key={i} path={path} component={component}></Route>
+        ))}
       </Layout>
+      <Buttons />
     </>
   )
 }
