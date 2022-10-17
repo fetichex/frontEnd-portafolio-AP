@@ -25,4 +25,5 @@ export interface Project {
   href: string
   description: string
   image: string
+  tech: string[]
 }

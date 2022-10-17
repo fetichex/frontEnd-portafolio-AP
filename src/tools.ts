@@ -28,12 +28,48 @@ export const EXTERNAL_LINK: TypeLink[] = [
     text: 'LinkedIn',
     icon: IoLogoLinkedin
   },
-  { href: '/Diego_Cano_Full-Stack-Developer.pdf', text: 'Resume', download: '/Diego_Cano_Full-Stack-Developer.pdf', icon: IoDownload }
+  {
+    href: '/Diego_Cano_Full-Stack-Developer.pdf',
+    text: 'Resume',
+    download: '/Diego_Cano_Full-Stack-Developer.pdf',
+    icon: IoDownload
+  }
 ]
 
 export const PROJECTS: Project[] = [
-  { id: 3, description: '', title: 'flaminCode', href: '', image: '' },
-  { id: 4, description: '', title: 'other', href: '', image: '' },
-  { id: 2, description: '', title: 'Padelapp', href: '', image: '' },
-  { id: 1, description: '', title: 'Culinarify', href: '', image: '' }
+  {
+    id: 2,
+    description:
+      'PadelApp is a web application that seeks to facilitate the process of renting a paddle tennis court for users. In this project we achieved:-Register/manage users - players -Register/manage users - Owners -register/manage super-User -Register/manage the paddle courts Dashboard for owners and super-users -payment gateway',
+    tech: [
+      'React js',
+      'Redux ToolKit',
+      'Chakra-ui',
+      'Node.js',
+      'Express',
+      'Mongoose',
+      'MongoDB',
+      'Auth0'
+    ],
+    title: 'Padelapp',
+    href: 'https://padelapp.netlify.app/',
+    image: '/padelapp.png'
+  },
+  {
+    id: 1,
+    description:
+      'The idea when creating this application was to list culinary recipes with just their relevant information using the external API of spoonacular to - Create recipes - Search recipes - Filter/sort',
+    tech: [
+      'React',
+      'Redux',
+      'Styled-Component',
+      'Node.js',
+      'Express',
+      'Sequelize',
+      'PostgreSQL'
+    ],
+    title: 'Culinarify',
+    href: 'https://culinarifyf.onrender.com/',
+    image: '/culinarify.png'
+  }
 ]
