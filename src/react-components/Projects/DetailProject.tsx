@@ -1,5 +1,15 @@
-import { useState } from 'react'
-import { Grid, GridItem, Stack, Button, Image, Text } from '@chakra-ui/react'
+import { ReactNode, useState } from 'react'
+import {
+  Grid,
+  GridItem,
+  Stack,
+  HStack,
+  VStack,
+  Button,
+  Image,
+  Text,
+  Badge
+} from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { PROJECTS } from '../../tools'
 import { Project } from '../../interfaces'
@@ -13,6 +23,19 @@ export default function DetailProject() {
     const infoProject = PROJECTS?.find((p) => p.id === id)
     setProject(infoProject)
   }
+  const techs: Array<ReactNode> = []
+  project?.tech.forEach((t: string) => {
+    techs.push(
+      <Badge
+        rounded={'full'}
+        p={'1.5'}
+        bg={'red.300'}
+        color={'myBlack.500'}
+        fontWeight={'normal'}>
+        {t}
+      </Badge>
+    )
+  })
 
   return (
     <AnimatePresence>
@@ -27,12 +50,13 @@ export default function DetailProject() {
             h={'100%'}
             w={'100%'}
             alignItems={'flex-end'}
-            justifyContent={'space-around'}>
+            justifyContent={'space-evenly'}>
             {PROJECTS.map((p) => (
               <Button
                 as={'a'}
                 href={p.href}
                 key={p.id}
+                target={'_blank'}
                 variant={'unstyled'}
                 h={'fit-content'}
                 w={'fit-content'}
@@ -53,33 +77,38 @@ export default function DetailProject() {
           </Stack>
         </GridItem>
         <GridItem rowSpan={4} colSpan={3}>
-          <Stack
+          <VStack
             align={'center'}
-            direction={'column'}
-            h={'fit-content'}
+            justifyContent={'center'}
+            h={'100vh'}
             w={'100%'}>
             <MotionImageStack
-              boxSize={'lg'}
               overflow={'hidden'}
               px={2}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ ease: 'easeInOut', duration: 1 }}>
-              <Image objectFit={'contain'} src={project?.image}></Image>
+              <Image
+                objectFit={'contain'}
+                rounded={'0.5rem'}
+                src={project?.image}></Image>
             </MotionImageStack>
             <MotionTextStack
               h={'fit-content'}
-              w={'xl'}
+              w={'3xl'}
               px={'2rem'}
               pt={'1rem'}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ ease: 'easeInOut', duration: 1 }}>
-              <Text fontSize={'md'} letterSpacing={4} textAlign={'justify'}>
-                {project?.title.toUpperCase()}
-              </Text>
+              <VStack>
+                <HStack>{techs}</HStack>
+                <Text fontSize={'md'} letterSpacing={4} textAlign={'justify'}>
+                  {project?.description.toUpperCase()}
+                </Text>
+              </VStack>
             </MotionTextStack>
-          </Stack>
+          </VStack>
         </GridItem>
       </Grid>
     </AnimatePresence>
